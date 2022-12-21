@@ -42,8 +42,6 @@ public class Main {
         FunctionalEmployee.findEmployeeWithSalaryMoreNumber(employees,28000);
         Separator.separator();
         FunctionalEmployee.findAverageSalaryDepartment(employees,3);
-
-
-
+        
     }
 }
