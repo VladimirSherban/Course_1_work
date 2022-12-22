@@ -1,47 +1,65 @@
 public class Main {
     public static void main(String[] args) {
 
-        Employee[] employees = new Employee[10];
-        employees[0] = new Employee("Соколова Ева Николаевна", 2, 25000);
-        employees[1] = new Employee("Савин Илья Львович", 3, 27000);
-        employees[2] = new Employee("Герасимов Роман Леонидович", 1, 25000);
-        employees[3] = new Employee("Тихонов Руслан Алексеевич", 5, 40000);
-        employees[4] = new Employee("Андреева Екатерина Никитична", 4, 65000);
-        employees[5] = new Employee("Кузнецова Анастасия Павловна", 1, 20000);
-        employees[6] = new Employee("Сидоров Арсений Денисович", 1, 47000);
-        employees[7] = new Employee("Масленников Артём Викторович", 2, 35000);
-        employees[8] = new Employee("Романов Иван Александрович", 3, 25000);
-        employees[9] = new Employee("Горшкова Кира Константиновна", 5, 27000);
+        EmployeeBook employeeBook = new EmployeeBook();
 
-        FunctionalEmployee.printEmployees(employees);
+        employeeBook.addEmployee(new Employee("Соколова Ева Николаевна", 2, 25000));
+        employeeBook.addEmployee(new Employee("Савин Илья Львович", 3, 27000));
+
+        employeeBook.addEmployee(new Employee("Герасимов Роман Леонидович", 1, 25000));
+        employeeBook.addEmployee(new Employee("Тихонов Руслан Алексеевич", 5, 40000));
+
+        employeeBook.addEmployee(new Employee("Андреева Екатерина Никитична", 4, 65000));
+        employeeBook.addEmployee(new Employee("Кузнецова Анастасия Павловна", 4, 20000));
+
+        employeeBook.addEmployee(new Employee("Сидоров Арсений Денисович", 1, 47000));
+        employeeBook.addEmployee(new Employee("Масленников Артём Викторович", 2, 35000));
+
+        employeeBook.addEmployee(new Employee("Романов Иван Александрович", 3, 25000));
+        employeeBook.addEmployee(new Employee("Горшкова Кира Константиновна", 5, 27000));
+
+
+        employeeBook.printEmployees();
         Separator.separator();
-        FunctionalEmployee.costSalaryMonth(employees);
+        employeeBook.costSalaryMonth();
         Separator.separator();
-        FunctionalEmployee.findMinSalary(employees);
+        employeeBook.findMinSalary();
         Separator.separator();
-        FunctionalEmployee.findMaxSalary(employees);
+        employeeBook.findMaxSalary();
         Separator.separator();
-        FunctionalEmployee.averageValueOFSalaryMonth(employees);
+        employeeBook.averageValueOFSalaryMonth();
         Separator.separator();
-        FunctionalEmployee.printNameAllEmployees(employees);
+        employeeBook.printNameAllEmployees();
         Separator.separator();
-        FunctionalEmployee.findMinSalaryInDepartment(employees,5);
+        employeeBook.findMinSalaryInDepartment(2);
         Separator.separator();
-        FunctionalEmployee.findMaxSalaryInDepartment(employees,1);
+        employeeBook.findMaxSalaryInDepartment(3);
         Separator.separator();
-        FunctionalEmployee.costSalaryMonthInDepartment(employees,2);
+        employeeBook.costSalaryMonthInDepartment(4);
         Separator.separator();
-        FunctionalEmployee.indexSalary(employees,1.0839);
+        employeeBook.findAverageSalaryDepartment(5);
         Separator.separator();
-        FunctionalEmployee.indexSalaryInDepartment(employees,1.0839,3);
+        employeeBook.indexSalary(1.083);
         Separator.separator();
-        FunctionalEmployee.showDepartmentEmployees(employees,2);
+        employeeBook.showDepartmentEmployees(4);
         Separator.separator();
-        FunctionalEmployee.findEmployeeWithSalaryLessNumber(employees,28000);
+        employeeBook.updateEmployeeSalary("Горшкова Кира Константиновна", 30000);
         Separator.separator();
-        FunctionalEmployee.findEmployeeWithSalaryMoreNumber(employees,28000);
+        employeeBook.updateEmployeeSalary("Романов Иван Александрович", 25000);
         Separator.separator();
-        FunctionalEmployee.findAverageSalaryDepartment(employees,3);
-        
+        employeeBook.updateEmployeeDepartment("Сидоров Арсений Денисович", 2);
+        Separator.separator();
+        employeeBook.updateEmployeeDepartment("Масленников Артём Викторович", 2);
+        Separator.separator();
+        employeeBook.printDepartmentEmployees();
+        Separator.separator();
+        employeeBook.delEmployee(0);
+        Separator.separator();
+        employeeBook.printEmployees();
+        Separator.separator();
+        employeeBook.addEmployee(new Employee("Вася пупкин", 4, 10000));
+        Separator.separator();
+        employeeBook.printEmployees();
+        employeeBook.delEmployee(0);
     }
 }
