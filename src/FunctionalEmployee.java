@@ -1,4 +1,6 @@
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Optional;
 
 public class FunctionalEmployee {
 
@@ -15,23 +17,29 @@ public class FunctionalEmployee {
     }
 
     static void findMinSalary(Employee[] employees) {
-        Employee employeeWithMinSalary = new Employee(" ", 0, 6000000);
-        for (Employee employee : employees) {
-            if (employeeWithMinSalary.getSalary() > employee.getSalary()) {
-                employeeWithMinSalary = employee;
-            }
-        }
-        System.out.println("Сотрудник с минимальной зарплатой " + employeeWithMinSalary);
+//        Employee employeeWithMinSalary = new Employee(" ", 0, 6000000);
+//        for (Employee employee : employees) {
+//            if (employeeWithMinSalary.getSalary() > employee.getSalary()) {
+//                employeeWithMinSalary = employee;
+//            }
+//        }
+
+        Optional<Employee> employeeWithMin = Arrays.stream(employees).min(Comparator.comparing(Employee::getSalary));
+
+        System.out.println("Сотрудник с минимальной зарплатой " + employeeWithMin.get());
     }
 
     static void findMaxSalary(Employee[] employees) {
-        Employee employeeWithMaxSalary = new Employee(" ", 0, 0);
-        for (Employee employee : employees) {
-            if (employeeWithMaxSalary.getSalary() < employee.getSalary()) {
-                employeeWithMaxSalary = employee;
-            }
-        }
-        System.out.println("Сотрудник с максимальной зарплатой " + employeeWithMaxSalary);
+//        Employee employeeWithMaxSalary = new Employee(" ", 0, 0);
+//        for (Employee employee : employees) {
+//            if (employeeWithMaxSalary.getSalary() < employee.getSalary()) {
+//                employeeWithMaxSalary = employee;
+//            }
+//        }
+
+        Optional<Employee> employeeWithMax = Arrays.stream(employees).max(Comparator.comparing(Employee::getSalary));
+
+        System.out.println("Сотрудник с максимальной зарплатой " + employeeWithMax);
     }
 
     static void averageValueOFSalaryMonth(Employee[] employees) {
@@ -58,27 +66,36 @@ public class FunctionalEmployee {
     }
 
     static void findMinSalaryInDepartment(Employee[] employees, int numberDepartment) {
-        Employee employeeWithMinSalary = new Employee(" ", 0, 6000000);
-        for (Employee employee : employees) {
-            if (employee.getDepartment() == numberDepartment) {
-                if (employeeWithMinSalary.getSalary() > employee.getSalary()) {
-                    employeeWithMinSalary = employee;
-                }
-            }
-        }
-        System.out.println("Сотрудник с самой маленькой зарплатой в департаменте №" + numberDepartment + " является " + employeeWithMinSalary);
+//        Employee employeeWithMinSalary = new Employee(" ", 0, 6000000);
+//        for (Employee employee : employees) {
+//            if (employee.getDepartment() == numberDepartment
+//                    && employeeWithMinSalary.getSalary() > employee.getSalary()) {
+//
+//                employeeWithMinSalary = employee;
+//            }
+//        }
+
+        Optional<Employee> employeeWithMin = Arrays.stream(employees)
+                .filter(employee -> employee.getDepartment() == numberDepartment)
+                .min(Comparator.comparing(Employee::getSalary));
+
+        System.out.println("Сотрудник с самой маленькой зарплатой в департаменте №" + numberDepartment + " является " + employeeWithMin);
     }
 
     static void findMaxSalaryInDepartment(Employee[] employees, int numberDepartment) {
-        Employee employeeWithMaxSalary = new Employee(" ", 0, 0);
-        for (Employee employee : employees) {
-            if (employee.getDepartment() == numberDepartment) {
-                if (employeeWithMaxSalary.getSalary() < employee.getSalary()) {
-                    employeeWithMaxSalary = employee;
-                }
-            }
-        }
-        System.out.println("Сотрудник с самой большой зарплатой в департаменте №" + numberDepartment + " является " + employeeWithMaxSalary);
+//        Employee employeeWithMaxSalary = new Employee(" ", 0, 0);
+//        for (Employee employee : employees) {
+//            if (employee.getDepartment() == numberDepartment) {
+//                if (employeeWithMaxSalary.getSalary() < employee.getSalary()) {
+//                    employeeWithMaxSalary = employee;
+//                }
+//            }
+//        }
+
+        Optional<Employee> employeeWithMax = Arrays.stream(employees)
+                .filter(employee -> employee.getDepartment() == numberDepartment)
+                .max(Comparator.comparing(Employee::getSalary));
+        System.out.println("Сотрудник с самой большой зарплатой в департаменте №" + numberDepartment + " является " + employeeWithMax);
     }
 
     static void costSalaryMonthInDepartment(Employee[] employees, int numberDepartment) {
